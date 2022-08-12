@@ -1,4 +1,4 @@
-package com.callor.hello;
+package com.gogoys.hello.hello;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
