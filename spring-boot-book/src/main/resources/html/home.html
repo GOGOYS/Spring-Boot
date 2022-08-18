@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<body>
+  <h1>안녕~ 안녕~ 하세요~</h1>
+    <form method="POST" class="w3-container">
+        <div>
+            <label class="w3-text-blue">ISBN</label>
+            <input class="w3-input" name="isbn" placeholder="ISBN">
+        </div>
+
+        <div>
+            <label class="w3-text-blue">도서명</label>
+            <input class="w3-input" name="title" placeholder="TITLE">
+        </div>
+        <div>
+            <label class="w3-text-blue">출판사</label>
+            <input class="w3-input" name="comp" placeholder="COMP">
+        </div>
+        <div>
+            <label class="w3-text-blue">저자</label>
+            <input class="w3-input" name="author" placeholder="AUTHOR">
+        </div>
+        <div>
+            <label class="w3-text-blue">출판일</label>
+            <input class="w3-input" name="pubdate" placeholder="PUBDATE">
+        </div>
+        <div>
+            <label class="w3-text-blue">정가</label>
+            <input class="w3-input" name="price"  value="0" type="number">
+        </div>
+        <button class="w3-button w3-blue">저장</button>
+    </form>
+
+    <div clas="w3-container">
+        <table class=" books w3-table w3-table-all">
+            <thead>
+                <tr>
+                    <th>ISBN</th>
+                    <th>도서명</th>
+                    <th>출판사</th>
+                    <th>저자</th>
+                    <th>출판일</th>
+                    <th>가격</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="book:${BOOKLIST}"
+                    th:attr="data-isbn=${book.isbn}">
+                    <td th:text="${book.isbn}">ISBN</td>
+                    <td th:text="${book.title}">도서명</td>
+                    <td th:text="${book.comp}">출판사</td>
+                    <td th:text="${book.author}">저자</td>
+                    <td th:text="${book.pubdate}">출판일</td>
+                    <td th:text="${book.price}">가격</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+<script>
+    document.addEventListener("DOMContentLoaded",()=>{
+        const book_table= document.querySelector("table.books")
+        book_table?.addEventListener("click",(e)=>{
+            const td = e.target;
+            const tr = td.closest("TR");
+            const isbn = tr.dataset.isbn
+
+            alert(isbn);
+
+            document.location.href = `$/{isbn}`
+        })
+    })
+</script>
+
+</body>
+</html>
