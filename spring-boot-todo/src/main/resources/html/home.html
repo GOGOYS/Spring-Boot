@@ -5,7 +5,55 @@
     <title>Title</title>
 </head>
 <body>
-    <h1>안녕</h1>
+<h1>안녕 디지몬 내꿈을 찾아가~</h1>
+
+<form method="POST">
+    <input name="todo" placeholder="TODO INSERT">
+    <button>입력</button>
+</form>
+
+<div>
+    <table class="todo">
+        <thead>
+            <tr>
+                <th>SEQ</th>
+                <th>TODO</th>
+                <th>START DATE</th>
+                <th>START TIME</th>
+                <th>END DATE</th>
+                <th>END TIME</th>
+                <th>FINISH</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="todo:${TODO}"
+                th:attr="data-seq=${todo.seq}">
+                <td th:text="${todo.seq}">SEQ</td>
+                <td th:text="${todo.todo}">TODO</td>
+                <td th:text="${todo.s_date}">S_DATE</td>
+                <td th:text="${todo.s_time}">S_TIME</td>
+                <td th:text="${todo.e_date}">E_DATE</td>
+                <td th:text="${todo.e_time}">E_TIME</td>
+                <td th:text="${todo.finish}">FINISH</td>
+                <td>완료</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
 </body>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const books_table = document.querySelector("table.todo")
+        books_table?.addEventListener("click", (e) => {
+            const td = e.target
+            const tr = td.closest("TR")
+            const seq = tr?.dataset.seq
+            // alert(isbn)
+            document.location.href="/?seq="+seq
+        })
+    })
+
+</script>
 </html>

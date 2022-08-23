@@ -32,7 +32,7 @@ public class AuthorService implements UserDetailsService {
                 .enabled(true)
                 .authorities(authList)
                 .build();
-        
+
         return userVO;
     }
 }

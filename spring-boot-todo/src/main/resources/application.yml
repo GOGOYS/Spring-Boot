@@ -1,0 +1,35 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/todoDB
+    username: GOGOYS
+    password: '!Korea8080'
+
+
+  thymeleaf:
+    prefix: classpath:html/
+    suffix: .html
+    mode: HTML5
+    template-resolver-order: 0
+
+  jpa:
+    hibernate.ddl-auto: update
+    properties:
+      hibernate.show_sql: true
+      hibernate.format_sql: true
+
+
+  # css, js, image 등을 공개할 디렉토리 선언
+  web:
+    resources:
+      static-locations:
+        classpath: static/
+        add-mappings: true
+
+  mvc:
+    static-path-pattern: /static/**
+
+
+  # resource/log/logbcak-local.xml 파일을 설정파일로 지정하기
+logging:
+  config: classpath:log/log-back.xml
